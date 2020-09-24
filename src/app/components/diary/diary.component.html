@@ -1,0 +1,43 @@
+
+<div class="container">
+    <header>
+   <h1 class="text-center">
+       MY DIARY
+   </h1>
+</header>
+   <hr style="width: 50%;">
+<div class="row" >
+    <div class="col-sm-6">
+        <div>
+        <div class="card text-center" >
+                <div class="card-header">
+                  
+                  <h5 class="card-title" >A record of what i did today</h5>
+                </div>
+            <div *ngFor='let diary of diaries;let i = index'>
+                <div>
+                  <blockquote class="border" id="diary">
+                    <p class="card-text">{{diary.name}}</p>
+                  <button  (click)='toggleDetails(i)' class="btn btn-primary"> Know More!</button>
+                  
+                  </blockquote>
+                  
+                </div>
+                <div *ngIf='diary.showDescription'>
+                    <app-diary-details [diary]='diary' (isComplete) = 'deleteDiary($event,i)'></app-diary-details>
+                </div>
+            </div> 
+                <div class="card-footer text-muted">
+                  Story of my life!
+                </div>
+            </div>
+            </div>
+     </div>
+     <div class= " border col-md-6">
+        <app-diary-form (addDiary)="addNewDiary($event)"></app-diary-form>
+      </div>
+
+</div>
+    
+
+</div>
